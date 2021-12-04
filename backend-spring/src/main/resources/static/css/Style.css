@@ -13,7 +13,7 @@
 .container {
   margin-top: 20px;
   max-width: 450px;
-  height: 280px;
+  height: 100%;
   border: 1px solid #918181;
   border-radius: 8px;
   padding: 5px;
@@ -22,7 +22,16 @@
 #container1 {
   margin-top: 70px;
   max-width: 600px;
-  height: 350px;
+  height: 100%;
+  border: 1px solid #918181;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #eaeaea;
+}
+#container2{
+  margin-top: 70px;
+  max-width: 600px;
+  height: 100%;
   border: 1px solid #918181;
   border-radius: 8px;
   padding: 5px;
