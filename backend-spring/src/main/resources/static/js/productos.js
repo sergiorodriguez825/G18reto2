@@ -21,7 +21,6 @@ function cargarProductos(){
 function mostrarProductos(productos){
     txt=`<thead>
     <tr>
-      <th scope="col">Id</th>
       <th scope="col">Referencia</th>
       <th scope="col">Categoría</th>
       <th scope="col">Descripción</th>
@@ -36,14 +35,17 @@ function mostrarProductos(productos){
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
         txt+= `
-      
         <tr>
-          <th scope="row">${producto.id}</th>
-          <td>${producto.refer}</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td scope="row">${producto.reference}</td>
+          <td>${producto.category}</td>
+          <td>${producto.description}</td>
+          
+          <td>${producto.availability}</td>
+          <td>${producto.price}</td>
+          <td>${producto.quantity}</td>
+          <td>${producto.photography}</td>
+          <td> <button class="btn btn-primary">Editar</button> <button class="btn btn-error">Eliminar</button></td>
         </tr>
-        
       `
     }
     txt+=`</tbody>`

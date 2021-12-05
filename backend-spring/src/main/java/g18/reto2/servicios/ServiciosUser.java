@@ -23,7 +23,7 @@ public class ServiciosUser {
     }
 
     public ModeloUser create(ModeloUser user) {
-        if (user.getId() == null) {
+        if (user.getId() != null) {
             return user;            
         }else {
             Optional<ModeloUser> e = UserRepository.getUser(user.getId());
