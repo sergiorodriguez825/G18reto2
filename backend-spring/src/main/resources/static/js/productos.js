@@ -19,10 +19,35 @@ function cargarProductos(){
 }
 
 function mostrarProductos(productos){
-    txt=""
+    txt=`<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Referencia</th>
+      <th scope="col">Categoría</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Disponibilidad</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>`
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
+        txt+= `
+      
+        <tr>
+          <th scope="row">${producto.id}</th>
+          <td>${producto.refer}</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        
+      `
     }
+    txt+=`</tbody>`
+    $("table").append(txt)
 }
 
 function crearProducto(producto){
@@ -53,5 +78,5 @@ function validarProducto(producto){
 }
 
 function limpiarTabla(){
-    
+    $("table").empty();
 }
