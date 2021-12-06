@@ -198,7 +198,7 @@ function editarProducto(reference){
             </div>
             <div class="col">
                 <div class="d-grid gap-2">
-                <button class="btn btn-dark" data-bs-dismiss="modal" type="button">Regresar</button>
+                <button id="regresar" class="btn btn-dark" data-bs-dismiss="modal" type="button">Regresar</button>
                 </div>
             </div>
         </div>
@@ -225,6 +225,9 @@ function editarProducto(reference){
     };
     actualizarProducto(producto);
   });
+  $("#regresar").click(function(){
+    limpiarCampos()
+  })
 
 }
 
