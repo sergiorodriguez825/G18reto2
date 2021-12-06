@@ -21,6 +21,7 @@ $("#crearProducto").click(function () {
         
     </div>`;
   $(".modal-footer").append(txt);
+  $("#reference").prop("disabled",false);
   $("#crear").click(function () {
     let producto = {
       reference: $("#reference").val(),
@@ -84,7 +85,8 @@ function mostrarProductos(productos) {
           <td>${producto.photography}</td>
           <td>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Editar</button>
+                <button class="btn btn-primary" type="button" onclick=editarProducto("${producto.reference}") data-bs-toggle="modal"
+                data-bs-target="#modalProducto" >Editar</button>
                 <button class="btn btn-danger" type="button" onclick=eliminarProducto("${producto.reference}")>Eliminar</button>
             </div>
          </td>
@@ -116,8 +118,7 @@ function crearProducto(producto) {
         console.log("Algo fallo");
       },
     });
-  } else {
-  }
+  } 
 }
 
 function validarProducto(producto) {
@@ -177,10 +178,74 @@ function findByReference(reference){
     
     for (let i = 0; i < productosActuales.length; i++) {
         let producto = productosActuales[i];
-        console.log(producto)
         if (producto.reference===reference){
             return producto
         }
     }
     return undefined
+}
+
+function editarProducto(reference){
+  let producto = findByReference(reference);
+  $(".modal-footer").empty();
+  let txt = `
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button id="actualizar" class="btn btn-primary" type="button">Actualizar</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-grid gap-2">
+                <button class="btn btn-dark" data-bs-dismiss="modal" type="button">Regresar</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>`;
+  $(".modal-footer").append(txt);
+  $("#reference").val(producto.reference)
+  $("#category").val(producto.category)
+  $("#radioDisponibilidadSi").prop("checked",producto.availability)
+  $("#price").val(producto.price)
+  $("#quantity").val(producto.quantity)
+  $("#description").val(producto.description)
+  $("#photo").val(producto.photography)
+  $("#reference").prop("disabled",true)
+  $("#actualizar").click(function () {
+    producto = {
+      reference: $("#reference").val(),
+      category: $("#category").val(),
+      availability: $("#radioDisponibilidadSi").prop("checked"),
+      description: $("#description").val(),
+      price: $("#price").val(),
+      quantity: $("#quantity").val(),
+      photography: $("#photo").val(),
+    };
+    actualizarProducto(producto);
+  });
+
+}
+
+function actualizarProducto(producto){
+  let dataToSend = JSON.stringify(producto)
+  $.ajax({
+    url: "/api/chocolate/update",
+    type: "PUT",
+    data: dataToSend,
+    datatype: "JSON",
+    contentType: "application/json",
+    success: function (producto) {
+      if (producto.reference) {
+        alert("Producto actualizado");
+        limpiarCampos();
+        $(".modal").modal("hide");
+        cargarProductos();
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log("Algo falló ");
+    },
+  });
 }
