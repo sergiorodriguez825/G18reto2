@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/Style.css">
+  <link rel="stylesheet" href="css/productos.css">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -20,7 +20,7 @@
 
   <title>Registrar Producto</title>
 
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="ww.ico">
 
 </head>
 
@@ -46,7 +46,13 @@
                 <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="Usuarios.html">Usuario</a>
+                <a class="nav-link" href="productosADM.html">Agregar Producto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="productosADM.html">Tabla de productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="UsuariosADM.html">Usuarios</a>
               </li>
             </ul>
 
@@ -57,41 +63,41 @@
     <br>
     <br>
     <br>
-    <div class="container" id="container2">
+    <div class="container" id="container1">
       <div id="login-row" class="row justify-content-center align-items-center">
-        <div id="login-column" class="col-md-6">
-          <div id="login-box" class="col-md-12">
-            <form id="login-form" class="form" action="" method="post">
+        <div id="login-column" class="col-md-12">
+          <div id="login-box">
+            <form id="login-form" class="form row g-2" action="" method="post">
               <h3 class="p2 text-center">Producto</h3>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Nombre:</label><br />
                 <input type="username" name="username" id="username" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Marca:</label><br />
                 <input type="text" name="text" id="Marca" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Categoria:</label><br />
                 <input type="text" name="username" id="Categoria" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Precio:</label><br />
                 <input type="number" name="username" id="Precio" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Calidad:</label><br />
                 <input type="text" name="username" id="Calidad" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Descripcion:</label><br />
                 <input type="text" name="username" id="Descripcion" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Stock:</label><br />
                 <input type="number" name="username" id="Stock" class="form-control" required maxlength="80" />
               </div>
-              <div class="form-group">
+              <div class="col-md-6">
                 <label for="username" class="p3">Foto:</label><br />
                 <input type="text" name="username" id="Foto" class="form-control" required maxlength="80" />
               </div>
