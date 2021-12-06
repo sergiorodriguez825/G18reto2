@@ -71,7 +71,7 @@ function crearProducto(producto){
             }
         });
     }else{
-        alert("Verifique los campos que ha ingresado. Revise si:\n- si su correo es válido\n- si las contraseñas coinciden\n- no tienen campos vacíos ")
+        alert("Verifique los campos que ha ingresado. Revise si no tiene campos vacíos")
     }
 }
 
