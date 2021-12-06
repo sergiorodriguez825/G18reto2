@@ -3,7 +3,8 @@ function validarFormatoCorreo(correo){
     if (emailRegex.test(correo)){
         return true
     }
-    return false;
+    return console.log("error");
+
 }
 
 function validaesVacio(dato){
