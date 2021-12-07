@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 var usuariosActuales = [];
 $("#registrarUsuario").click(function () {
+  limpiarCampos()
   $(".modal-footer").empty();
   let txt = `
     <div class="container-fluid">
@@ -15,7 +16,7 @@ $("#registrarUsuario").click(function () {
             </div>
             <div class="col">
                 <div class="d-grid gap-2">
-                <button class="btn btn-dark" data-bs-dismiss="modal" type="button">Regresar</button>
+                <button id="regresar" class="btn btn-dark" data-bs-dismiss="modal" type="button">Regresar</button>
                 </div>
             </div>
         </div>
@@ -33,9 +34,12 @@ $("#registrarUsuario").click(function () {
       zone: $("#zone").val(),
       type: $("#type").val(),
     };
-    console.log(usuario)
+    
     crearUsuario(usuario);
   });
+  $("#regresar").click(function(){
+    limpiarCampos()
+  })
 });
 function cargarUsuarios() {
   $.ajax({
@@ -97,6 +101,8 @@ function registrarse() {
 
 function crearUsuario(usuario) {
   let dataToSend = JSON.stringify(usuario);
+  values=[validar(),validaContraseña(),correoValido]
+  console.log(values)
   if (validar() == true && validaContraseña() == true && correoValido) {
     $.ajax({
       url: "/api/user/new",
@@ -140,11 +146,10 @@ function validarExisteEmail(email, crear,actualizar=false) {
         correoValido = false;
       } else if(actualizar){
         correoValido = true;
-      } else{
-        if (crear) {
-            crearUsuario();
-          }
-      }
+      } else {
+            correoValido=true
+        }
+      
     },
     error: function (jqXHR, textStatus, errorThrown) {
       console.log("Algo fallo");
@@ -285,9 +290,9 @@ function editarUsuario(id) {
         };
         actualizarUsuario(usuario);
       });
-      $("#regresar").click(function(){
-        limpiarCampos()
-      })
+    $("#regresar").click(function(){
+      limpiarCampos()
+    })
 
 }
 function actualizarUsuario(usuario){
