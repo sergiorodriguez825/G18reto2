@@ -44,7 +44,7 @@ public class ControladorUser {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete (@PathVariable("id") int id) {
+    public boolean delete (@PathVariable("id") String id) {
         return UserService.delete(id);
     }
     

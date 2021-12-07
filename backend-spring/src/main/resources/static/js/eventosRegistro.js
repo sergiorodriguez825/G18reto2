@@ -1,5 +1,5 @@
-$("#useremail").blur(function(){
-    let correo = $("#useremail").val()
+$("#email").blur(function(){
+    let correo = $("#email").val()
     if(!validarFormatoCorreo(correo)){
         mostrarFormatoInvalido()
     }else{
@@ -8,6 +8,6 @@ $("#useremail").blur(function(){
     
 })
 
-$("#useremail").click(function(){
+$("#email").click(function(){
     ocultarFormatoInvalido()
 })

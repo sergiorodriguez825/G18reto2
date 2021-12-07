@@ -30,12 +30,16 @@ function login(){
 
 function autenticacion(respuesta){
     console.log (respuesta);
-    if(respuesta.name=="NO DEFINIDO"){
+    if(respuesta.name==null){
         alert("Usuario o contraseña incorrecta")
     }
     else{
         alert("Bienvenido "+respuesta.name)
-        location.href ="main.html";
+        if(respuesta.type==="COORD" || respuesta.type==="ASE")
+            location.href ="productosUSER.html";
+        else{
+            location.href ="Main.html";
+        }
     }
 }
 
