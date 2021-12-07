@@ -4,6 +4,7 @@ $(document).ready(function () {
 
 var usuariosActuales = [];
 $("#registrarUsuario").click(function () {
+  limpiarCampos()
   $(".modal-footer").empty();
   let txt = `
     <div class="container-fluid">
