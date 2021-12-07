@@ -11,35 +11,37 @@ import g18.reto2.repositorio.RepositorioUser;
 
 @Service
 public class ServiciosUser {
+
     @Autowired
     private RepositorioUser UserRepository;
-    
+
     public List<ModeloUser> getAll() {
         return UserRepository.getAll();
     }
 
-    public Optional<ModeloUser> getUser(Integer id) {
+    public Optional<ModeloUser> getUser(String id) {
         return UserRepository.getUser(id);
     }
 
     public ModeloUser create(ModeloUser user) {
-        if (user.getId() != null) {
-            return user;            
-        }else {
+        if (user.getId() == null) {
+            return UserRepository.create(user);
+        } else {
             Optional<ModeloUser> e = UserRepository.getUser(user.getId());
             if (e.isEmpty()) {
-                if (emailExists(user.getEmail())==false){
+                if (emailExists(user.getEmail()) == false) {
                     return UserRepository.create(user);
-                }else{
+                } else {
                     return user;
                 }
-            }else{
+            } else {
                 return user;
-            }           
+            }
         }
+
     }
 
-    public ModeloUser update(ModeloUser user) {
+public ModeloUser update(ModeloUser user) {
         if (user.getId() != null) {
             Optional<ModeloUser> userDb = UserRepository.getUser(user.getId());
             if (!userDb.isEmpty()) {
@@ -74,7 +76,7 @@ public class ServiciosUser {
         }
     }
 
-    public boolean delete(int userId) {
+    public boolean delete(String userId) {
         Boolean aBoolean = getUser(userId).map(user -> {
             UserRepository.delete(user);
             return true;

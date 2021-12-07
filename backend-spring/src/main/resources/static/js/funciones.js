@@ -10,3 +10,14 @@ function validarFormatoCorreo(correo){
 function validaesVacio(dato){
     return !dato.trim().length;
 }
+
+function isNumeric(numstr)
+{
+    if (numstr.match(/^\d+$/ ) ) {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

@@ -18,7 +18,7 @@ public class RepositorioUser {
         return (List<ModeloUser>) UserCRUDRepository.findAll();
     }
 
-    public Optional<ModeloUser> getUser (int id) {
+    public Optional<ModeloUser> getUser (String id) {
         return UserCRUDRepository.findById(id);
     }
 
