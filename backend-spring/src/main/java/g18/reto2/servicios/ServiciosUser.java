@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import g18.reto2.modelo.ModeloUser;
 import g18.reto2.repositorio.RepositorioUser;
+import java.time.LocalTime;
 
 @Service
 public class ServiciosUser {
@@ -19,12 +20,14 @@ public class ServiciosUser {
         return UserRepository.getAll();
     }
 
-    public Optional<ModeloUser> getUser(String id) {
+    public Optional<ModeloUser> getUser(Integer id) {
         return UserRepository.getUser(id);
     }
 
     public ModeloUser create(ModeloUser user) {
         if (user.getId() == null) {
+            LocalTime time = LocalTime.now();
+            user.setId((Math.abs((int)time.toNanoOfDay())));
             return UserRepository.create(user);
         } else {
             Optional<ModeloUser> e = UserRepository.getUser(user.getId());
@@ -76,7 +79,7 @@ public ModeloUser update(ModeloUser user) {
         }
     }
 
-    public boolean delete(String userId) {
+    public boolean delete(Integer userId) {
         Boolean aBoolean = getUser(userId).map(user -> {
             UserRepository.delete(user);
             return true;

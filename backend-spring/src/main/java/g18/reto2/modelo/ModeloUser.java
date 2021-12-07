@@ -15,9 +15,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModeloUser {
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private String id;
+    private Integer id;
     private String identification;
     private String name;
     private String address;
