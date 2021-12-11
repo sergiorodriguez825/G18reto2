@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="js/coorZona.js"></script>
+    <title>Coordinador de zona</title>
+</head>
+
+<body>
+<link rel="shortcut icon" href="ww.ico">
+    <div id="login">
+        <nav class="navbar navbar-dark fixed-top" style="background-color: #863c59;">
+            <div class="container-fluid">
+                <a class="navbar-brand p1" href="index.html">
+                    <img src="logo1.jpeg" alt="Trulli" width="40" height="40"> Willy Wonka</a>
+                
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <img src="logo.jpeg" alt="Trulli" width="200" height="55">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body" style="background-color: #863c59;">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="Main.html">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="UsuariosADM.html">Usuarios</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Buscar..."
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </nav>
+    </div>
+    <section class="row text-center p-5 my-container ">
+    <div class="card " style="max-width: 70%;">
+        <div class="row g-0">
+          <div class="col-md-12 col align-self-center" >
+            <div class="card-body">
+              <h5 class="card-title text-center">Perfil</h5>
+              <div class="overflow-auto"  id="resultadoTabla" >
+              <p class="card-text text-center"><small class="text-muted"></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+</body>
+
+</html>
