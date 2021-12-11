@@ -324,7 +324,7 @@ function actualizarUsuario(usuario){
   }
 }
 function eliminarUsuario(id) {
-  let usuario = findById(id);
+  let usuario = findById(parseInt(id));
   let opc = confirm(
     `¿Está seguro que desea eliminar el usuario ${usuario.name}?`
   );
