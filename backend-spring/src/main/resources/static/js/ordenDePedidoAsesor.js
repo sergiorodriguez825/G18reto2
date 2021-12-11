@@ -14,7 +14,7 @@ function cargarFechaDeHoy() {
   if (day < 10) day = "0" + day;
 
   let today = year + "-" + month + "-" + day;
-  $("#todayDate").val(today);
+  $("#registerDay").val(today);
 }
 var productosActuales = [];
 function cargarProductos() {
