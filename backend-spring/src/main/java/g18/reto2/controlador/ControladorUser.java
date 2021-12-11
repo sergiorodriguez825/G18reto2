@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import g18.reto2.modelo.ModeloUser;
 import g18.reto2.servicios.ServiciosUser;
+import java.util.Optional;
 /**
  * 
  * @author 
@@ -29,14 +30,14 @@ public class ControladorUser {
      * 
      */
     @Autowired
-    private ServiciosUser UserService;
+    private ServiciosUser userService;
     /**
      * 
      * @return 
      */
     @GetMapping("/all")
     public List<ModeloUser> getAll() {
-        return UserService.getAll();
+        return userService.getAll();
     }
     /**
      * 
@@ -46,7 +47,7 @@ public class ControladorUser {
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ModeloUser create(@RequestBody ModeloUser user) {
-        return UserService.create(user);
+        return userService.create(user);
     }
     /**
      * 
@@ -56,7 +57,7 @@ public class ControladorUser {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public ModeloUser update(@RequestBody ModeloUser user) {
-        return UserService.update(user);
+        return userService.update(user);
     }
     /**
      * 
@@ -66,7 +67,7 @@ public class ControladorUser {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete (@PathVariable("id") Integer id) {
-        return UserService.delete(id);
+        return userService.delete(id);
     }
     /**
      * 
@@ -76,7 +77,7 @@ public class ControladorUser {
      */
     @GetMapping("/{email}/{password}")
     public ModeloUser authenticateUser(@PathVariable("email") String email, @PathVariable("password") String password) {
-        return UserService.authenticateUser(email, password);
+        return userService.authenticateUser(email, password);
     }
     /**
      * 
@@ -85,6 +86,11 @@ public class ControladorUser {
      */
     @GetMapping("/emailexist/{email}")
     public boolean emailExists(@PathVariable("email") String email) {
-        return UserService.emailExists(email);
+        return userService.emailExists(email);
+    }
+    
+    @GetMapping("/{id}")
+    public Optional <ModeloUser> getUser(@PathVariable("id") int id) {
+        return userService.getUser(id);
     }
 }
