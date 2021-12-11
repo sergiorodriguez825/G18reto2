@@ -247,7 +247,7 @@ function ocultarFormatoInvalido() {
 }
 
 function editarUsuario(id) {
-    let usuario = findById(id);
+    let usuario = findById(parseInt(id));
     $(".modal-footer").empty();
     let txt = `
     <div class="container-fluid">
