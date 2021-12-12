@@ -57,7 +57,7 @@ function cargarUsuarios() {
   });
 }
 function cargarTabla(usuarios) {
-  $("table").empty();
+  $("#tablaUsuarios").empty();
   let txt = `
     <thead>
           <th>Identificación</th>
@@ -89,7 +89,7 @@ function cargarTabla(usuarios) {
         `;
   }
   txt += "</tbody>";
-  $("table").append(txt);
+  $("#tablaUsuarios").append(txt);
 }
 var correoValido = false;
 function registrarse() {
@@ -247,7 +247,7 @@ function ocultarFormatoInvalido() {
 }
 
 function editarUsuario(id) {
-    let usuario = findById(id);
+    let usuario = findById(parseInt(id));
     $(".modal-footer").empty();
     let txt = `
     <div class="container-fluid">
@@ -324,7 +324,7 @@ function actualizarUsuario(usuario){
   }
 }
 function eliminarUsuario(id) {
-  let usuario = findById(id);
+  let usuario = findById(parseInt(id));
   let opc = confirm(
     `¿Está seguro que desea eliminar el usuario ${usuario.name}?`
   );

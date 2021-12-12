@@ -14,7 +14,7 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/buttons.css">
     <script src="js/coorZona.js"></script>
-    <title>Orden de pedido</title>
+    <title>Orden de pedido |Crear pedido</title>
 </head>
 
 <body>
@@ -34,13 +34,16 @@
     </section>
     <div class="container-fluid">
         <div class="row">
-            <h1>Pedidos</h1>
-            <div class="col-sm-5 h-50">
+            <h1>Crear Pedidos</h1>
+            <div class="col-sm-5">
                 <h2>Información del pedido</h2>
                 <form>
                     <div class="mb-3">
                         <label for="registerDay" class="form-label">Fecha</label>
                         <input type="date" name="registerDay" class="form-control" id="registerDay" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <button id="crearOrden" class="btn btn-primary">Crear orden</button>
                     </div>
                 </form>
                 <h2>Productos en la orden</h2>
