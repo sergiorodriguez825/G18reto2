@@ -88,7 +88,9 @@ public class ControladorUser {
     public boolean emailExists(@PathVariable("email") String email) {
         return userService.emailExists(email);
     }
-    
+    /**
+     * 
+     */
     @GetMapping("/{id}")
     public Optional <ModeloUser> getUser(@PathVariable("id") int id) {
         return userService.getUser(id);
