@@ -66,13 +66,11 @@ function mostrarProductos(productos) {
   txt += `</tbody>`;
   $("#tablaProductos").append(txt);
   $("#tablaProductos").css({ "font-size": "12px" });
-  
 }
 
-
-function agregarALaOrden(reference){
+function agregarALaOrden(reference) {
   const producto = buscarProducto(reference);
-  let txt= `
+  let txt = `
     <tr>
         <td>
         ${producto.reference}
@@ -83,25 +81,77 @@ function agregarALaOrden(reference){
             <input type="number" id="cant-${producto.reference}" class="form-control cantidad" placeholder="Cantidad" aria-label="cantidad" aria-describedby="basic-addon1" value="1">
         </div>
         </td>
-        <td><button class="btn btn-secondary">Eliminar</button></td>
+        <td><button id="el-${producto.reference}" class="btn btn-secondary eliminar"  >Eliminar</button></td>
     </tr>
   `;
-  
+
   $("#bodyTablaProductosEnOrden").append(txt);
   $(".cantidad").off("change");
-  $(".cantidad").change(function(){
-    let num=parseInt($(this).val());
-    if(num<=0){
-      $(this).val(1)
+  $(".cantidad").change(function () {
+    let num = parseInt($(this).val());
+    if (num <= 0) {
+      $(this).val(1);
     }
+  });
+  $(".eliminar").off("click");
+  $(".eliminar").click(function () {
+    console.log(this);
+    let idEliminar = parseInt($(this).prop("id").split("-")[1]);
+    $(this).parent().parent().remove()
   });
 }
 
-function buscarProducto(reference){
+function buscarProducto(reference) {
   for (let i = 0; i < productosActuales.length; i++) {
     const producto = productosActuales[i];
-    if(producto.reference===reference){
+    if (producto.reference === reference) {
       return producto;
-    }    
+    }
   }
 }
+
+function crearOrden() {
+  filas=$("#bodyTablaProductosEnOrden").children()
+  orden={id:null}
+  orden.registerDay=$("#registerDay").val()
+  orden.status="Pendiente"
+  let vendedor= JSON.parse(sessionStorage.getItem("user"))
+  orden.salesMan=vendedor
+  orden.products={}
+  orden.quantities={}
+  for (let i = 0; i < filas.length; i++) {
+    cellsData=$(filas[i]).children()
+    for (let j = 0; j < cellsData.length; j++) {
+      let reference= $(cellsData[0]).text().trim()
+      let producto = buscarProducto(reference);
+      let cantidad = parseInt($("#cant-"+reference).val())
+      orden.products[reference]=producto
+      orden.quantities[reference]=cantidad      
+    }
+  }
+  registrarOrden()
+}
+
+function registrarOrden(){
+  let dataToSend = JSON.stringify(orden);
+    $.ajax({
+      url: "/api/order/new",
+      type: "POST",
+      data: dataToSend,
+      datatype: "JSON",
+      contentType: "application/json",
+      success: function (order) {
+          alert("Orden registrada. El coordinador de su zona revisará su pedido");
+          location.href="ordenDePedido.html"
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log("Algo fallo");
+      },
+    });
+}
+
+
+$("#crearOrden").click(function(e){
+    e.preventDefault()
+    crearOrden()
+})
