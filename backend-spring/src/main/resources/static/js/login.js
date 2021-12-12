@@ -31,7 +31,7 @@ function login() {
                         const sesionStore = JSON.stringify(respuesta);
                         console.log(sesionStore);
                         sessionStorage.setItem("user", sesionStore);
-                        location.href = 'asesor.html';
+                        location.href = 'ordenDePedido.html';
 
                     } else if (respuesta.type === 'COORD') {
                         const sesionStore = JSON.stringify(respuesta);
