@@ -90,6 +90,8 @@ public class ControladorUser {
     }
     /**
      * 
+     * @param id
+     * @return 
      */
     @GetMapping("/{id}")
     public Optional <ModeloUser> getUser(@PathVariable("id") int id) {
