@@ -96,8 +96,7 @@ function agregarALaOrden(reference) {
   $(".eliminar").off("click");
   $(".eliminar").click(function () {
     console.log(this);
-    let idEliminar = parseInt($(this).prop("id").split("-")[1]);
-    $(this).parent().parent().remove()
+    $(this).parent().parent().remove();
   });
 }
 
@@ -111,47 +110,50 @@ function buscarProducto(reference) {
 }
 
 function crearOrden() {
-  filas=$("#bodyTablaProductosEnOrden").children()
-  orden={id:null}
-  orden.registerDay=$("#registerDay").val()
-  orden.status="Pendiente"
-  let vendedor= JSON.parse(sessionStorage.getItem("user"))
-  orden.salesMan=vendedor
-  orden.products={}
-  orden.quantities={}
-  for (let i = 0; i < filas.length; i++) {
-    cellsData=$(filas[i]).children()
-    for (let j = 0; j < cellsData.length; j++) {
-      let reference= $(cellsData[0]).text().trim()
-      let producto = buscarProducto(reference);
-      let cantidad = parseInt($("#cant-"+reference).val())
-      orden.products[reference]=producto
-      orden.quantities[reference]=cantidad      
+  filas = $("#bodyTablaProductosEnOrden").children();
+  orden = { id: null };
+  orden.registerDay = $("#registerDay").val();
+  orden.status = "Pendiente";
+  let vendedor = JSON.parse(sessionStorage.getItem("user"));
+  orden.salesMan = vendedor;
+  orden.products = {};
+  orden.quantities = {};
+  if (filas.length === 0) {
+    alert("No se puede crear la orden.\nDebe registrar al menos un producto");
+  } else {
+    for (let i = 0; i < filas.length; i++) {
+      cellsData = $(filas[i]).children();
+      for (let j = 0; j < cellsData.length; j++) {
+        let reference = $(cellsData[0]).text().trim();
+        let producto = buscarProducto(reference);
+        let cantidad = parseInt($("#cant-" + reference).val());
+        orden.products[reference] = producto;
+        orden.quantities[reference] = cantidad;
+      }
     }
+    registrarOrden();
   }
-  registrarOrden()
 }
 
-function registrarOrden(){
+function registrarOrden() {
   let dataToSend = JSON.stringify(orden);
-    $.ajax({
-      url: "/api/order/new",
-      type: "POST",
-      data: dataToSend,
-      datatype: "JSON",
-      contentType: "application/json",
-      success: function (order) {
-          alert("Orden registrada. El coordinador de su zona revisará su pedido");
-          location.href="ordenDePedido.html"
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log("Algo fallo");
-      },
-    });
+  $.ajax({
+    url: "/api/order/new",
+    type: "POST",
+    data: dataToSend,
+    datatype: "JSON",
+    contentType: "application/json",
+    success: function (order) {
+      alert("Orden registrada. El coordinador de su zona revisará su pedido");
+      location.href = "ordenDePedido.html";
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log("Algo fallo");
+    },
+  });
 }
 
-
-$("#crearOrden").click(function(e){
-    e.preventDefault()
-    crearOrden()
-})
+$("#crearOrden").click(function (e) {
+  e.preventDefault();
+  crearOrden();
+});
