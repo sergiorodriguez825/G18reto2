@@ -57,7 +57,7 @@ function cargarUsuarios() {
   });
 }
 function cargarTabla(usuarios) {
-  $("table").empty();
+  $("#tablaUsuarios").empty();
   let txt = `
     <thead>
           <th>Identificación</th>
@@ -89,7 +89,7 @@ function cargarTabla(usuarios) {
         `;
   }
   txt += "</tbody>";
-  $("table").append(txt);
+  $("#tablaUsuarios").append(txt);
 }
 var correoValido = false;
 function registrarse() {
