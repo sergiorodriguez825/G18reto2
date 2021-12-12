@@ -130,6 +130,7 @@ $(document).ready(function () {
         <th scope="col">Precio</th>
         <th scope="col">Descripción</th>
         <th scope="col">Cantidad</th>
+        <th scope="col">Stock</th>
         <th scope="col">Disponibilidad</th>
         <th scope="col">Foto (enlace):</th>
       
@@ -141,10 +142,11 @@ $(document).ready(function () {
         texto2 +=`<tr>
         <td>${product.reference}</td>
         <td>${product.category}</td>
-        <td>${product.description}</td>
-        <td>${product.availability}</td>
         <td>${product.price}</td>
+        <td>${product.description}</td>
         <td>${quantities[reference]}</td>
+        <td>${product.quantity}</td>
+        <td>${product.availability}</td>
         <td>${product.photography}</td>
     </tr>`
 
